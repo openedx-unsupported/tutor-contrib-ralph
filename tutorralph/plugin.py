@@ -25,6 +25,9 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         ("RALPH_VERSION", __version__),
         ("RALPH_IMAGE_NAME", 'ralph'),
         ("RALPH_IMAGE_TAG", 'master'),
+        # Change to https:// if the public interface to it is secure
+        ("RALPH_HTTP_PROTOCOL", 'http://'),
+        ("RALPH_HOST", 'ralph'),
         ("RALPH_PORT", '8100'),
     ]
 )
