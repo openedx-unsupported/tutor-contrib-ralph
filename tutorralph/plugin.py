@@ -23,7 +23,9 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         # Each new setting is a pair: (setting_name, default_value).
         # Prefix your setting names with 'RALPH_'.
         ("RALPH_VERSION", __version__),
-
+        ("RALPH_IMAGE_NAME", 'ralph'),
+        ("RALPH_IMAGE_TAG", 'master'),
+        ("RALPH_PORT", '8100'),
     ]
 )
 
@@ -176,16 +178,16 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
 hooks.Filters.ENV_PATCHES.add_item(
     (
         "local-docker-compose-services",
-        f"""  
+        """
 ralph:
-    image: docker.io/fundocker/ralph:master
+    image: docker.io/fundocker/{{ RALPH_IMAGE_NAME }}:{{ RALPH_IMAGE_TAG }}
     depends_on:
       clickhouse:
         condition: service_healthy
     env_file:
       - ../../env/plugins/ralph/apps/config/env
     ports:
-      - "8100:8100"
+      - "{{ RALPH_PORT }}:{{ RALPH_PORT }}"
     command:
       - python 
       - "-m"
