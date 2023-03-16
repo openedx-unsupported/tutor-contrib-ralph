@@ -2,8 +2,11 @@ from __future__ import annotations
 
 import os
 import os.path
+import random
+import string
 from glob import glob
 
+import bcrypt
 import click
 import pkg_resources
 from tutor import hooks
@@ -20,9 +23,28 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         # Each new setting is a pair: (setting_name, default_value).
         # Prefix your setting names with 'RALPH_'.
         ("RALPH_VERSION", __version__),
-
+        ("RALPH_IMAGE_NAME", 'ralph'),
+        ("RALPH_IMAGE_TAG", 'master'),
+        # Change to https:// if the public interface to it is secure
+        ("RALPH_HTTP_PROTOCOL", 'http://'),
+        ("RALPH_HOST", 'ralph'),
+        ("RALPH_PORT", '8100'),
     ]
 )
+
+# Ralph requires us to write out a file with pre-encrypted values, so we encrypt
+# them here per: https://openfun.github.io/ralph/api/#creating_a_credentials_file
+#
+# They will remain unchanged between config saves as usual and the unencryted
+# passwords will still be able to be printed.
+RALPH_ADMIN_PASSWORD = ''.join(random.choice(string.ascii_lowercase) for i in range(36))
+RALPH_LMS_PASSWORD = ''.join(random.choice(string.ascii_lowercase) for i in range(36))
+RALPH_ADMIN_HASHED_PASSWORD = bcrypt.hashpw(
+    RALPH_ADMIN_PASSWORD.encode(),
+    bcrypt.gensalt()).decode("ascii")
+RALPH_LMS_HASHED_PASSWORD = bcrypt.hashpw(
+    RALPH_LMS_PASSWORD.encode(),
+    bcrypt.gensalt()).decode("ascii")
 
 hooks.Filters.CONFIG_UNIQUE.add_items(
     [
@@ -32,6 +54,13 @@ hooks.Filters.CONFIG_UNIQUE.add_items(
         # Prefix your setting names with 'RALPH_'.
         # For example:
         ### ("RALPH_SECRET_KEY", "{{ 24|random_string }}"),
+
+        ("RALPH_ADMIN_USERNAME", "ralph"),
+        ("RALPH_ADMIN_PASSWORD", RALPH_ADMIN_PASSWORD),
+        ("RALPH_ADMIN_HASHED_PASSWORD", RALPH_ADMIN_HASHED_PASSWORD),
+        ("RALPH_LMS_USERNAME", "lms"),
+        ("RALPH_LMS_PASSWORD", RALPH_LMS_PASSWORD),
+        ("RALPH_LMS_HASHED_PASSWORD", RALPH_LMS_HASHED_PASSWORD),
     ]
 )
 
@@ -149,29 +178,30 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
     ],
 )
 
-
 hooks.Filters.ENV_PATCHES.add_item(
     (
         "local-docker-compose-services",
-        f"""  
+        """
 ralph:
-    #image: fundocker/ralph:master
-    image: ralph:development
+    image: docker.io/fundocker/{{ RALPH_IMAGE_NAME }}:{{ RALPH_IMAGE_TAG }}
     depends_on:
-      - clickhouse
+      clickhouse:
+        condition: service_healthy
     env_file:
       - ../../env/plugins/ralph/apps/config/env
     ports:
-      - "8100:8100"
+      - "{{ RALPH_PORT }}:{{ RALPH_PORT }}"
     command:
+      - python 
+      - "-m"
       - ralph
       - "-v"
       - DEBUG
       - runserver
       - "-b"
-      - "mongo"
+      - "clickhouse"
     volumes:
-      - /Users/brianmesick/Dev/forks/ralph:/app
+      - ../../env/plugins/ralph/apps/config/ralph_auth/:/app/.ralph
         """
     )
 )
