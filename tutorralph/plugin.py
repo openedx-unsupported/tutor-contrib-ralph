@@ -29,6 +29,7 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         ("RALPH_HTTP_PROTOCOL", 'http://'),
         ("RALPH_HOST", 'ralph'),
         ("RALPH_PORT", '8100'),
+        ("RALPH_ENABLE_PUBLIC_URL", False),
     ]
 )
 
