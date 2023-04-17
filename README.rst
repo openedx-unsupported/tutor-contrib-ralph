@@ -1,18 +1,20 @@
 ralph plugin for `Tutor <https://docs.tutor.overhang.io>`__
 ===================================================================================
 
-Installs the `Ralph <https://github.com/openfun/ralph>`__ Learning Records System (LRS).
+Runs `Ralph <https://github.com/openfun/ralph>`__ Learning Records System (LRS) in the Tutor environment.
+
+This plugin is speculative and being used to test new Open edX analytics features. It is not configured for production use at this time, use at your own risk!
+
+See https://github.com/openedx/openedx-oars for more details.
+
+This plugin is intended to be used with the `tutor-contrib-oars <https://github.com/openedx/tutor-contrib-oars>`__ plugin but can be used independently.
 
 Installation
 ------------
 
-The Ralph LRS relies on a couple other Tutor plugins:
-
 ::
 
     pip install git+https://github.com/openedx/tutor-contrib-ralph
-    pip install git+https://github.com/openedx/tutor-contrib-clickhouse
-    pip install git+https://github.com/openedx/tutor-contrib-oars
 
 
 Compatibility
@@ -26,8 +28,6 @@ Usage
 
 1. Enable the plugins::
 
-    tutor plugins enable clickhouse
-    tutor plugins enable oars
     tutor plugins enable ralph
 
 2. Save the changes to the environment::
