@@ -14,6 +14,13 @@ The Ralph LRS relies on a couple other Tutor plugins:
     pip install git+https://github.com/openedx/tutor-contrib-clickhouse
     pip install git+https://github.com/openedx/tutor-contrib-oars
 
+
+Compatibility
+-------------
+
+This plugin is compatible with Tutor 15.0.0 and later.
+
+
 Usage
 -----
 
