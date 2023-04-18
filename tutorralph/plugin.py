@@ -179,34 +179,6 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
     ],
 )
 
-hooks.Filters.ENV_PATCHES.add_item(
-    (
-        "local-docker-compose-services",
-        """
-ralph:
-    image: docker.io/fundocker/{{ RALPH_IMAGE_NAME }}:{{ RALPH_IMAGE_TAG }}
-    depends_on:
-      clickhouse:
-        condition: service_healthy
-    env_file:
-      - ../../env/plugins/ralph/apps/config/env
-    ports:
-      - "{{ RALPH_PORT }}:{{ RALPH_PORT }}"
-    command:
-      - python 
-      - "-m"
-      - ralph
-      - "-v"
-      - DEBUG
-      - runserver
-      - "-b"
-      - "clickhouse"
-    volumes:
-      - ../../env/plugins/ralph/apps/config/ralph_auth/:/app/.ralph
-        """
-    )
-)
-
 ########################################
 # PATCH LOADING
 # (It is safe & recommended to leave
