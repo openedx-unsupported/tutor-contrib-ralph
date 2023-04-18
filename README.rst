@@ -30,11 +30,16 @@ Usage
 
     tutor plugins enable ralph
 
-2. Save the changes to the environment::
+2. Optionally, you can allow the LRS API to accesible by domain by setting the following variables in you **config.yml** (only if you are running **tutor local**):
+
+    RALPH_ENABLE_PUBLIC_URL: true
+    RALPH_HOST: ralph.local.overhang.io
+
+3. Save the changes to the environment::
 
     tutor config save
 
-3. Run the initialization scripts in your chosen environment (dev or local)::
+4. Run the initialization scripts in your chosen environment (dev or local)::
 
     tutor [dev|local] do init
 
