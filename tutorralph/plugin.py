@@ -23,12 +23,12 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         # Each new setting is a pair: (setting_name, default_value).
         # Prefix your setting names with 'RALPH_'.
         ("RALPH_VERSION", __version__),
-        ("RALPH_IMAGE_NAME", 'ralph'),
-        ("RALPH_IMAGE_TAG", 'master'),
+        ("RALPH_IMAGE_NAME", "ralph"),
+        ("RALPH_IMAGE_TAG", "master"),
         # Change to https:// if the public interface to it is secure
-        ("RALPH_HTTP_PROTOCOL", 'http://'),
-        ("RALPH_HOST", 'ralph'),
-        ("RALPH_PORT", '8100'),
+        ("RALPH_HTTP_PROTOCOL", "http://"),
+        ("RALPH_HOST", "ralph"),
+        ("RALPH_PORT", "8100"),
         ("RALPH_ENABLE_PUBLIC_URL", False),
     ]
 )
@@ -38,14 +38,14 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
 #
 # They will remain unchanged between config saves as usual and the unencryted
 # passwords will still be able to be printed.
-RALPH_ADMIN_PASSWORD = ''.join(random.choice(string.ascii_lowercase) for i in range(36))
-RALPH_LMS_PASSWORD = ''.join(random.choice(string.ascii_lowercase) for i in range(36))
+RALPH_ADMIN_PASSWORD = "".join(random.choice(string.ascii_lowercase) for i in range(36))
+RALPH_LMS_PASSWORD = "".join(random.choice(string.ascii_lowercase) for i in range(36))
 RALPH_ADMIN_HASHED_PASSWORD = bcrypt.hashpw(
-    RALPH_ADMIN_PASSWORD.encode(),
-    bcrypt.gensalt()).decode("ascii")
+    RALPH_ADMIN_PASSWORD.encode(), bcrypt.gensalt()
+).decode("ascii")
 RALPH_LMS_HASHED_PASSWORD = bcrypt.hashpw(
-    RALPH_LMS_PASSWORD.encode(),
-    bcrypt.gensalt()).decode("ascii")
+    RALPH_LMS_PASSWORD.encode(), bcrypt.gensalt()
+).decode("ascii")
 
 hooks.Filters.CONFIG_UNIQUE.add_items(
     [
@@ -55,7 +55,6 @@ hooks.Filters.CONFIG_UNIQUE.add_items(
         # Prefix your setting names with 'RALPH_'.
         # For example:
         ### ("RALPH_SECRET_KEY", "{{ 24|random_string }}"),
-
         ("RALPH_ADMIN_USERNAME", "ralph"),
         ("RALPH_ADMIN_PASSWORD", RALPH_ADMIN_PASSWORD),
         ("RALPH_ADMIN_HASHED_PASSWORD", RALPH_ADMIN_HASHED_PASSWORD),
