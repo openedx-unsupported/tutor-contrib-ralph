@@ -1,14 +1,13 @@
 ralph:
-    image: docker.io/fundocker/{{ RALPH_IMAGE_NAME }}:{{ RALPH_IMAGE_TAG }}
+    image: {{ DOCKER_IMAGE_RALPH }}
     depends_on:
-      - clickhouse:
-        condition: service_healthy
+      - clickhouse
     env_file:
       - ../../env/plugins/ralph/apps/config/env
     ports:
       - "{{ RALPH_PORT }}:{{ RALPH_PORT }}"
     command:
-      - python 
+      - python
       - "-m"
       - ralph
       - "-v"

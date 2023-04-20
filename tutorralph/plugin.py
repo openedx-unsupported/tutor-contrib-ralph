@@ -23,8 +23,7 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         # Each new setting is a pair: (setting_name, default_value).
         # Prefix your setting names with 'RALPH_'.
         ("RALPH_VERSION", __version__),
-        ("RALPH_IMAGE_NAME", "ralph"),
-        ("RALPH_IMAGE_TAG", "master"),
+        ("DOCKER_IMAGE_RALPH", "docker.io/fundocker/ralph:3.5.1"),
         # Change to https:// if the public interface to it is secure
         ("RALPH_HTTP_PROTOCOL", "http://"),
         ("RALPH_HOST", "ralph"),
