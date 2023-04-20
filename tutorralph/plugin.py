@@ -41,8 +41,8 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
 RALPH_ADMIN_PASSWORD = "".join(random.choice(string.ascii_lowercase) for i in range(36))
 RALPH_LMS_PASSWORD = "".join(random.choice(string.ascii_lowercase) for i in range(36))
 RALPH_ADMIN_HASHED_PASSWORD = bcrypt.hashpw(
-    RALPH_ADMIN_PASSWORD.encode(),
-    bcrypt.gensalt()).decode("ascii")
+    RALPH_ADMIN_PASSWORD.encode(), bcrypt.gensalt()
+).decode("ascii")
 RALPH_LMS_HASHED_PASSWORD = bcrypt.hashpw(
     RALPH_LMS_PASSWORD.encode(), bcrypt.gensalt()
 ).decode("ascii")
