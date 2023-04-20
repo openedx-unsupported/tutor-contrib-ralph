@@ -24,7 +24,7 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         # Prefix your setting names with 'RALPH_'.
         ("RALPH_VERSION", __version__),
         ("RALPH_IMAGE_NAME", "ralph"),
-        ("RALPH_IMAGE_TAG", "master"),
+        ("RALPH_IMAGE_TAG", "3.5.1"),
         # Change to https:// if the public interface to it is secure
         ("RALPH_HTTP_PROTOCOL", "http://"),
         ("RALPH_HOST", "ralph"),
@@ -41,8 +41,8 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
 RALPH_ADMIN_PASSWORD = "".join(random.choice(string.ascii_lowercase) for i in range(36))
 RALPH_LMS_PASSWORD = "".join(random.choice(string.ascii_lowercase) for i in range(36))
 RALPH_ADMIN_HASHED_PASSWORD = bcrypt.hashpw(
-    RALPH_ADMIN_PASSWORD.encode(), bcrypt.gensalt()
-).decode("ascii")
+    RALPH_ADMIN_PASSWORD.encode(),
+    bcrypt.gensalt()).decode("ascii")
 RALPH_LMS_HASHED_PASSWORD = bcrypt.hashpw(
     RALPH_LMS_PASSWORD.encode(), bcrypt.gensalt()
 ).decode("ascii")
