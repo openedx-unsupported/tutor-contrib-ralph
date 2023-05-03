@@ -60,6 +60,8 @@ hooks.Filters.CONFIG_UNIQUE.add_items(
         ("RALPH_LMS_USERNAME", "lms"),
         ("RALPH_LMS_PASSWORD", RALPH_LMS_PASSWORD),
         ("RALPH_LMS_HASHED_PASSWORD", RALPH_LMS_HASHED_PASSWORD),
+        ("RALPH_SENTRY_DSN", ""),
+        ("RALPH_EXECUTION_ENVIRONMENT", "development"),
     ]
 )
 

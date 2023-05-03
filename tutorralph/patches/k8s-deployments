@@ -53,6 +53,11 @@ spec:
               value: "1m"
             - name: RALPH_RUNSERVER_PORT
               value: "{{RALPH_PORT}}"
+            - name: RALPH_SENTRY_DSN
+              value: "{{RALPH_SENTRY_DSN}}"
+            - name: RALPH_EXECUTION_ENVIRONMENT
+              value: "{{RALPH_EXECUTION_ENVIRONMENT}}"
+
           image: {{DOCKER_IMAGE_RALPH}}
           name: ralph
           ports:
