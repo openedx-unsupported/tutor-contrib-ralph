@@ -29,6 +29,10 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         ("RALPH_HOST", "ralph"),
         ("RALPH_PORT", "8100"),
         ("RALPH_ENABLE_PUBLIC_URL", False),
+        ("RALPH_SENTRY_DSN", ""),
+        ("RALPH_EXECUTION_ENVIRONMENT", "development"),
+        ("RALPH_SENTRY_CLI_TRACES_SAMPLE_RATE", 1.0),
+        ("RALPH_SENTRY_LRS_TRACES_SAMPLE_RATE", 0.1),
     ]
 )
 
@@ -60,8 +64,6 @@ hooks.Filters.CONFIG_UNIQUE.add_items(
         ("RALPH_LMS_USERNAME", "lms"),
         ("RALPH_LMS_PASSWORD", RALPH_LMS_PASSWORD),
         ("RALPH_LMS_HASHED_PASSWORD", RALPH_LMS_HASHED_PASSWORD),
-        ("RALPH_SENTRY_DSN", ""),
-        ("RALPH_EXECUTION_ENVIRONMENT", "development"),
     ]
 )
 

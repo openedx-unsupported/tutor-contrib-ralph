@@ -52,3 +52,7 @@ spec:
               value: "{{RALPH_SENTRY_DSN}}"
             - name: RALPH_EXECUTION_ENVIRONMENT
               value: "{{RALPH_EXECUTION_ENVIRONMENT}}"
+            - name: RALPH_SENTRY_CLI_TRACES_SAMPLE_RATE
+              value: "{{RALPH_SENTRY_CLI_TRACES_SAMPLE_RATE}}"
+            - name: RALPH_SENTRY_LRS_TRACES_SAMPLE_RATE
+              value: "{{RALPH_SENTRY_LRS_TRACES_SAMPLE_RATE}}"
