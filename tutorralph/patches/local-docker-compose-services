@@ -1,7 +1,8 @@
+{% if RUN_RALPH %}
 ralph:
     image: {{ DOCKER_IMAGE_RALPH }}
-    depends_on:
-      - clickhouse
+    {% if RUN_CLICKHOUSE %}depends_on:
+      - clickhouse{% endif %}
     env_file:
       - ../../env/plugins/ralph/apps/config/env
     ports:
@@ -17,3 +18,4 @@ ralph:
       - "clickhouse"
     volumes:
       - ../../env/plugins/ralph/apps/config/ralph_auth/:/app/.ralph
+{% endif %}

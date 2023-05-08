@@ -44,6 +44,17 @@ Usage
     tutor [dev|local] do init
 
 
+If you are operating Ralph service in a different environment than the one you are 
+running Tutor, you can set the following variables in your **config.yml**:
+
+.. code-block:: yaml
+
+    RUN_RALPH: false
+    RALPH_HOST: <ralph host>
+    RALPH_RUN_HTTPS: true|false
+    RALPH_LMS_USERNAME: <ralph lms username>
+    RALPH_LMS_PASSWORD: <ralph lms password>
+
 License
 -------
 
