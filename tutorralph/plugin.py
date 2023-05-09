@@ -25,7 +25,7 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         ("RALPH_VERSION", __version__),
         ("DOCKER_IMAGE_RALPH", "docker.io/fundocker/ralph:3.5.1"),
         # Change to https:// if the public interface to it is secure
-        ("RALPH_HTTP_PROTOCOL", "http://"),
+        ("RALPH_RUN_HTTPS", False),
         ("RALPH_HOST", "ralph"),
         ("RALPH_PORT", "8100"),
         ("RALPH_ENABLE_PUBLIC_URL", False),
@@ -64,6 +64,7 @@ hooks.Filters.CONFIG_UNIQUE.add_items(
         ("RALPH_LMS_USERNAME", "lms"),
         ("RALPH_LMS_PASSWORD", RALPH_LMS_PASSWORD),
         ("RALPH_LMS_HASHED_PASSWORD", RALPH_LMS_HASHED_PASSWORD),
+        ("RUN_RALPH", True),
     ]
 )
 

@@ -1,3 +1,4 @@
+{% if RUN_RALPH %}
 ---
 apiVersion: v1
 kind: Service
@@ -11,3 +12,4 @@ spec:
       protocol: TCP
   selector:
     app.kubernetes.io/name: ralph
+{% endif %}
