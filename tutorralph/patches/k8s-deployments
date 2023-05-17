@@ -62,6 +62,8 @@ spec:
               value: "{{RALPH_SENTRY_CLI_TRACES_SAMPLE_RATE}}"
             - name: RALPH_SENTRY_LRS_TRACES_SAMPLE_RATE
               value: "{{RALPH_SENTRY_LRS_TRACES_SAMPLE_RATE}}"
+            - name: RALPH_SENTRY_IGNORE_HEALTH_CHECKS
+              value: "{{RALPH_SENTRY_IGNORE_HEALTH_CHECKS}}"
           image: {{DOCKER_IMAGE_RALPH}}
           name: ralph
           ports:

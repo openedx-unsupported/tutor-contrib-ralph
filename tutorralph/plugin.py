@@ -23,7 +23,7 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         # Each new setting is a pair: (setting_name, default_value).
         # Prefix your setting names with 'RALPH_'.
         ("RALPH_VERSION", __version__),
-        ("DOCKER_IMAGE_RALPH", "docker.io/fundocker/ralph:3.5.1"),
+        ("DOCKER_IMAGE_RALPH", "docker.io/fundocker/ralph:3.6.0"),
         # Change to https:// if the public interface to it is secure
         ("RALPH_RUN_HTTPS", False),
         ("RALPH_HOST", "ralph"),
@@ -33,6 +33,7 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         ("RALPH_EXECUTION_ENVIRONMENT", "development"),
         ("RALPH_SENTRY_CLI_TRACES_SAMPLE_RATE", 1.0),
         ("RALPH_SENTRY_LRS_TRACES_SAMPLE_RATE", 0.1),
+        ("RALPH_SENTRY_IGNORE_HEALTH_CHECKS", True),
     ]
 )
 
