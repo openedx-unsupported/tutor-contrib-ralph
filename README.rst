@@ -1,3 +1,10 @@
+THIS REPOSITORY IS DEPRECATED
+=============================
+
+This functionality now lives in `tutor-contrib-oars <https://github.com/openedx/tutor-contrib-oars>`__ as we work to consolidate the Open edX analytics functionality into one place.
+
+This repository was experimental as we worked on OARS and will be archived soon.
+
 ralph plugin for `Tutor <https://docs.tutor.overhang.io>`__
 ===================================================================================
 
@@ -44,7 +51,7 @@ Usage
     tutor [dev|local] do init
 
 
-If you are operating Ralph service in a different environment than the one you are 
+If you are operating Ralph service in a different environment than the one you are
 running Tutor, you can set the following variables in your **config.yml**:
 
 .. code-block:: yaml
